@@ -14,6 +14,8 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Image" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -28,6 +30,8 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Title" Type="String" Nullable="false" />
+          <Property Name="Image" Type="String" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -40,6 +44,8 @@
         <MappingFragment StoreEntitySet="ChallengeSet">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

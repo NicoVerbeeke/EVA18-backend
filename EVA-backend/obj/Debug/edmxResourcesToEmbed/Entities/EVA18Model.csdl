@@ -9,5 +9,7 @@
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Title" Type="String" Nullable="false" />
+    <Property Name="Image" Type="String" Nullable="false" />
+    <Property Name="Description" Type="String" Nullable="false" />
   </EntityType>
 </Schema>

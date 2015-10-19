@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 10/18/2015 18:02:23
+-- Date Created: 10/19/2015 19:46:15
 -- Generated from EDMX file: C:\Users\Nico\Documents\Projecten TILE\EVA18-backend\EVA-backend\Entities\EVA18Model.edmx
 -- --------------------------------------------------
 
@@ -22,6 +22,9 @@ GO
 -- Dropping existing tables
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[ChallengeSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[ChallengeSet];
+GO
 
 -- --------------------------------------------------
 -- Creating all tables
@@ -30,7 +33,9 @@ GO
 -- Creating table 'ChallengeSet'
 CREATE TABLE [dbo].[ChallengeSet] (
     [Id] int IDENTITY(1,1) NOT NULL,
-    [Title] nvarchar(max)  NOT NULL
+    [Title] nvarchar(max)  NOT NULL,
+    [Image] nvarchar(max)  NOT NULL,
+    [Description] nvarchar(max)  NOT NULL
 );
 GO
 
