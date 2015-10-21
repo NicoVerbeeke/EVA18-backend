@@ -184,6 +184,9 @@
     <Compile Include="Entities\Challenge.cs">
       <DependentUpon>EVA18Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\Difficulty.cs">
+      <DependentUpon>EVA18Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\EVA18Model.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -198,6 +201,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>EVA18Model.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Tag.cs">
+      <DependentUpon>EVA18Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
