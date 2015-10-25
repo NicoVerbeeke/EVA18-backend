@@ -1,4 +1,6 @@
-﻿using EVA_backend.Entities;
+﻿using EVA_backend.Adapters;
+using EVA_backend.DataModels;
+using EVA_backend.Entities;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -12,18 +14,11 @@ namespace EVA_backend.Controllers
     [RoutePrefix("api/challenge")]
     public class ChallengeController : ApiController
     {
-        private DbContext db = new EVA18Entities();
-        public IEnumerable<string> Get()
+        private ChallengeBusinessComponentAdapter _challengeAdapter = new ChallengeBusinessComponentAdapter();
+
+        public IEnumerable<ChallengeDataObject> Get()
         {
-            List<String> output = new List<string>();
-            List<Challenge> challenges = db.Set<Challenge>().ToList();
-            foreach(Challenge c in challenges)
-            {
-                output.Add(c.Title);
-            }
-
-            return output.AsEnumerable();
+            return _challengeAdapter.GetChallenges();
         }       
-
     }
 }
