@@ -21,12 +21,12 @@ namespace EVA_backend.Entities
         }
     
         public int Id { get; set; }
-        public string NmbrOfChildren { get; set; }
+        public int NmbrOfChildren { get; set; }
         public string Email { get; set; }
         public string UserName { get; set; }
-        public string IsStudent { get; set; }
+        public bool IsStudent { get; set; }
         public string Language { get; set; }
-        public string BirthDate { get; set; }
+        public System.DateTime BirthDate { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Rating> Rating { get; set; }

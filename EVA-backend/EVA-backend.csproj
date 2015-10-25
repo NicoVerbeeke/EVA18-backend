@@ -202,7 +202,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EVA18Model.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Entities\Rating.cs">
+      <DependentUpon>EVA18Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Score.cs">
+      <DependentUpon>EVA18Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\Tag.cs">
+      <DependentUpon>EVA18Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\User.cs">
       <DependentUpon>EVA18Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
@@ -229,7 +238,9 @@
       <LastGenOutput>EVA18Model.cs</LastGenOutput>
     </Content>
     <Content Include="Global.asax" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -261,6 +272,7 @@
   <ItemGroup>
     <Content Include="Entities\EVA18Model.edmx.diagram">
       <DependentUpon>EVA18Model.edmx</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <PropertyGroup>

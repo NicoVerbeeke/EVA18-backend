@@ -16,6 +16,6 @@ namespace EVA_backend.Entities
     {
         public int Id { get; set; }
         public string Level { get; set; }
-        public string Num_Level { get; set; }
+        public int Num_Level { get; set; }
     }
 }
