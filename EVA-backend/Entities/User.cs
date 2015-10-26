@@ -12,24 +12,23 @@ namespace EVA_backend.Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class Challenge
+    public partial class User
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Challenge()
+        public User()
         {
-            this.Tag = new HashSet<Tag>();
+            this.Rating = new HashSet<Rating>();
         }
     
         public int Id { get; set; }
-        public string Title { get; set; }
-        public string Image { get; set; }
-        public string Description { get; set; }
-        public bool IsRecipeChallenge { get; set; }
-        public bool IsSocialChallenge { get; set; }
-        public bool IsRestaurantChallenge { get; set; }
+        public int NmbrOfChildren { get; set; }
+        public string Email { get; set; }
+        public string UserName { get; set; }
+        public bool IsStudent { get; set; }
+        public string Language { get; set; }
+        public System.DateTime BirthDate { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tag> Tag { get; set; }
-        public virtual Difficulty Difficulty { get; set; }
+        public virtual ICollection<Rating> Rating { get; set; }
     }
 }

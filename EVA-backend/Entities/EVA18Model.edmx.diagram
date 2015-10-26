@@ -4,8 +4,19 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="ef080103df374cc39b52672a9b2714ac" Name="Diagram1" >
-        <EntityTypeShape EntityType="EVA18Model.Challenge" Width="1.5" PointX="3.5" PointY="2.375" />
+      <Diagram DiagramId="ef080103df374cc39b52672a9b2714ac" Name="Diagram1" ZoomLevel="81" >
+        <EntityTypeShape EntityType="EVA18Model.Challenge" Width="1.5" PointX="5.125" PointY="0.875" />
+        <EntityTypeShape EntityType="EVA18Model.Difficulty" Width="1.5" PointX="7.625" PointY="0.875" />
+        <EntityTypeShape EntityType="EVA18Model.Tag" Width="1.5" PointX="7.625" PointY="3" />
+        <AssociationConnector Association="EVA18Model.ChallengeTag" />
+        <AssociationConnector Association="EVA18Model.ChallengeDifficulty" />
+        <EntityTypeShape EntityType="EVA18Model.User" Width="1.5" PointX="0.5" PointY="0.875" />
+        <EntityTypeShape EntityType="EVA18Model.Score" Width="1.5" PointX="2.75" PointY="0.875" />
+        <AssociationConnector Association="EVA18Model.ScoreChallenge" />
+        <AssociationConnector Association="EVA18Model.UserScore" />
+        <EntityTypeShape EntityType="EVA18Model.Rating" Width="1.5" PointX="2.75" PointY="3.25" />
+        <AssociationConnector Association="EVA18Model.RatingTag" />
+        <AssociationConnector Association="EVA18Model.RatingUser" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

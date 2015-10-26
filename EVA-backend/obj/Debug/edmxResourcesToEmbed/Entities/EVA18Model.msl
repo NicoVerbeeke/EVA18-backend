@@ -6,8 +6,101 @@
         <MappingFragment StoreEntitySet="ChallengeSet">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IsRecipeChallenge" ColumnName="IsRecipeChallenge" />
+          <ScalarProperty Name="IsSocialChallenge" ColumnName="IsSocialChallenge" />
+          <ScalarProperty Name="IsRestaurantChallenge" ColumnName="IsRestaurantChallenge" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="DifficultySet">
+      <EntityTypeMapping TypeName="IsTypeOf(EVA18Model.Difficulty)">
+        <MappingFragment StoreEntitySet="DifficultySet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Level" ColumnName="Level" />
+          <ScalarProperty Name="Num_Level" ColumnName="Num_Level" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TagSet">
+      <EntityTypeMapping TypeName="IsTypeOf(EVA18Model.Tag)">
+        <MappingFragment StoreEntitySet="TagSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserSet">
+      <EntityTypeMapping TypeName="IsTypeOf(EVA18Model.User)">
+        <MappingFragment StoreEntitySet="UserSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="NmbrOfChildren" ColumnName="NmbrOfChildren" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="IsStudent" ColumnName="IsStudent" />
+          <ScalarProperty Name="Language" ColumnName="Language" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ScoreSet">
+      <EntityTypeMapping TypeName="IsTypeOf(EVA18Model.Score)">
+        <MappingFragment StoreEntitySet="ScoreSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Points" ColumnName="Points" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RatingSet">
+      <EntityTypeMapping TypeName="IsTypeOf(EVA18Model.Rating)">
+        <MappingFragment StoreEntitySet="RatingSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Score" ColumnName="Score" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="ChallengeTag" TypeName="EVA18Model.ChallengeTag" StoreEntitySet="ChallengeTag">
+      <EndProperty Name="Challenge">
+        <ScalarProperty Name="Id" ColumnName="Challenge_Id" />
+      </EndProperty>
+      <EndProperty Name="Tag">
+        <ScalarProperty Name="Id" ColumnName="Tag_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ChallengeDifficulty" TypeName="EVA18Model.ChallengeDifficulty" StoreEntitySet="ChallengeSet">
+      <EndProperty Name="Difficulty">
+        <ScalarProperty Name="Id" ColumnName="Difficulty_Id" />
+      </EndProperty>
+      <EndProperty Name="Challenge">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="Difficulty_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ScoreChallenge" TypeName="EVA18Model.ScoreChallenge" StoreEntitySet="ScoreSet">
+      <EndProperty Name="Challenge">
+        <ScalarProperty Name="Id" ColumnName="Challenge_Id" />
+      </EndProperty>
+      <EndProperty Name="Score">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="RatingTag" TypeName="EVA18Model.RatingTag" StoreEntitySet="RatingSet">
+      <EndProperty Name="Tag">
+        <ScalarProperty Name="Id" ColumnName="Tag_Id" />
+      </EndProperty>
+      <EndProperty Name="Rating">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="RatingUser" TypeName="EVA18Model.RatingUser" StoreEntitySet="RatingSet">
+      <EndProperty Name="User">
+        <ScalarProperty Name="Id" ColumnName="User_Id" />
+      </EndProperty>
+      <EndProperty Name="Rating">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping>

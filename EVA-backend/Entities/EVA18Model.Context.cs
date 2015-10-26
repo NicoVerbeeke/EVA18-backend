@@ -26,5 +26,10 @@ namespace EVA_backend.Entities
         }
     
         public virtual DbSet<Challenge> ChallengeSet { get; set; }
+        public virtual DbSet<Difficulty> DifficultySet { get; set; }
+        public virtual DbSet<Tag> TagSet { get; set; }
+        public virtual DbSet<User> UserSet { get; set; }
+        public virtual DbSet<Score> ScoreSet { get; set; }
+        public virtual DbSet<Rating> RatingSet { get; set; }
     }
 }
