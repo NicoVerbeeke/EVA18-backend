@@ -15,7 +15,7 @@ namespace EVA_backend.Entities
     public partial class Rating
     {
         public int Id { get; set; }
-        public string Score { get; set; }
+        public int Score { get; set; }
     
         public virtual Tag Tag { get; set; }
         public virtual User User { get; set; }
