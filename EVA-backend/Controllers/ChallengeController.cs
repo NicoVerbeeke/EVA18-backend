@@ -15,7 +15,7 @@ namespace EVA_backend.Controllers
     public class ChallengeController : ApiController
     {
         private ChallengeBusinessComponentAdapter _challengeAdapter = new ChallengeBusinessComponentAdapter();
-
+        [Authorize]
         public IEnumerable<ChallengeDataObject> Get()
         {
             return _challengeAdapter.GetChallenges();
