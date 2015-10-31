@@ -14,7 +14,25 @@ namespace EVA_backend.Entities
     
     public partial class Challenge
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Challenge()
+        {
+            this.Tag = new HashSet<Tag>();
+            this.ChallengeVariants = new HashSet<ChallengeVariant>();
+        }
+    
         public int Id { get; set; }
         public string Title { get; set; }
+        public string Image { get; set; }
+        public string Description { get; set; }
+        public bool IsRecipeChallenge { get; set; }
+        public bool IsSocialChallenge { get; set; }
+        public bool IsRestaurantChallenge { get; set; }
+        public int Difficulty { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Tag> Tag { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ChallengeVariant> ChallengeVariants { get; set; }
     }
 }
