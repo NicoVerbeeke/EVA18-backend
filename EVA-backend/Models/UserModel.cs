@@ -37,5 +37,8 @@ namespace EVA_backend.Models
 
         [Required]
         public int Difficulty { get; set; }
+
+        [Required]
+        public bool SendNewsletter { get; set; }
     }
 }

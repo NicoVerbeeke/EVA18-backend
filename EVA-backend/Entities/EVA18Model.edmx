@@ -296,6 +296,7 @@
           <NavigationProperty Name="Rating" Relationship="EVA18Model.RatingUser" FromRole="User" ToRole="Rating" />
           <Property Name="Gender" Type="String" Nullable="false" />
           <Property Name="Difficulty" Type="Int32" Nullable="false" />
+          <Property Name="SendNewsletter" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="Score">
           <Key>

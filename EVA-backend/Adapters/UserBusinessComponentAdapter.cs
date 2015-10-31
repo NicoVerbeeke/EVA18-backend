@@ -29,7 +29,8 @@ namespace EVA_backend.Adapters
                 Language = dto.Language,
                 BirthDate = dto.BirthDate,
                 Gender = dto.Gender,
-                Difficulty = dto.Difficulty
+                Difficulty = dto.Difficulty,
+                SendNewsletter = dto.SendNewsletter
             };
         }
 
@@ -44,7 +45,8 @@ namespace EVA_backend.Adapters
                 Language = entity.Language,
                 BirthDate = entity.BirthDate,
                 Gender = entity.Gender,
-                Difficulty = entity.Difficulty
+                Difficulty = entity.Difficulty,
+                SendNewsletter = entity.SendNewsletter
             };
         }
 
