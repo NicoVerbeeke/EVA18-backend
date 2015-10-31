@@ -27,6 +27,8 @@ namespace EVA_backend.Entities
         public bool IsStudent { get; set; }
         public string Language { get; set; }
         public System.DateTime BirthDate { get; set; }
+        public string Gender { get; set; }
+        public int Difficulty { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Rating> Rating { get; set; }

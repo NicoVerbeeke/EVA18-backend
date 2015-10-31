@@ -12,10 +12,18 @@ namespace EVA_backend.Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class Difficulty
+    public partial class ChallengeVariant
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public ChallengeVariant()
+        {
+            this.Challenges = new HashSet<Challenge>();
+        }
+    
         public int Id { get; set; }
-        public string Level { get; set; }
-        public int Num_Level { get; set; }
+        public string Name { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Challenge> Challenges { get; set; }
     }
 }

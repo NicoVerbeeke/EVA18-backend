@@ -1,4 +1,5 @@
-﻿using EVA_backend.Entities;
+﻿using EVA_backend.Adapters;
+using EVA_backend.Entities;
 using EVA_backend.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -13,13 +14,14 @@ namespace EVA_backend.DataLayer
     public class AuthRepository : IDisposable
     {
         private AuthContext _ctx;
-
+        private UserBusinessComponentAdapter _userBCA;
         private UserManager<IdentityUser> _userManager;
 
         public AuthRepository()
         {
             _ctx = new AuthContext();
             _userManager = new UserManager<IdentityUser>(new UserStore<IdentityUser>(_ctx));
+            _userBCA = new UserBusinessComponentAdapter();
         }
 
         public async Task<IdentityResult> RegisterUser(UserModel userModel)
@@ -28,9 +30,14 @@ namespace EVA_backend.DataLayer
             {
                 UserName = userModel.UserName
             };
+            IdentityResult result = null;
+            result = await _userManager.CreateAsync(user, userModel.Password);
 
-            var result = await _userManager.CreateAsync(user, userModel.Password);
-
+            if (result.Succeeded)
+            {
+                _userBCA.InsertUser(userModel);
+            }         
+             
             return result;
         }
 
