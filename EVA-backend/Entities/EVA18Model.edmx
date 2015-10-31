@@ -80,6 +80,7 @@
     <Property Name="BirthDate" Type="datetime" Nullable="false" />
     <Property Name="Gender" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Difficulty" Type="int" Nullable="false" />
+    <Property Name="SendNewsletter" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="ScoreSet">
     <Key>
@@ -393,6 +394,7 @@
           <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
           <ScalarProperty Name="Gender" ColumnName="Gender" />
           <ScalarProperty Name="Difficulty" ColumnName="Difficulty" />
+          <ScalarProperty Name="SendNewsletter" ColumnName="SendNewsletter" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

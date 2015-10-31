@@ -184,6 +184,7 @@
     <Compile Include="Controllers\ChallengeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DataLayer\AuthRepository.cs" />
+    <Compile Include="DataLayer\ChallengeRepository.cs" />
     <Compile Include="DataLayer\UserRepository.cs" />
     <Compile Include="DataModels\ChallengeDataObject.cs" />
     <Compile Include="Entities\AuthContext.cs" />

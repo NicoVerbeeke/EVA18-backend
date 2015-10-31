@@ -1,4 +1,5 @@
-﻿using EVA_backend.DataModels;
+﻿using EVA_backend.DataLayer;
+using EVA_backend.DataModels;
 using EVA_backend.Entities;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,14 @@ namespace EVA_backend.Adapters
     public class ChallengeBusinessComponentAdapter
     {
         //Creating the datacontext
-        private DbContext _db = new EVA18Entities();
+        private DbContext _db;
+        private ChallengeRepository _chalRepo;
+
+        public ChallengeBusinessComponentAdapter()
+        {
+            _db = new EVA18Entities();
+            _chalRepo = new ChallengeRepository();
+        }
 
         public IEnumerable<ChallengeDataObject> GetChallenges()
         {
@@ -34,6 +42,11 @@ namespace EVA_backend.Adapters
             dto.Description = chal.Description;
 
             return dto;
+        }
+
+        public IEnumerable<String> GetRandomVariants(int number)
+        {
+            return _chalRepo.GetRandomVariants(number);
         }
     }
 }

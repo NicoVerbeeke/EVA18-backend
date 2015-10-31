@@ -75,6 +75,7 @@
     <Property Name="BirthDate" Type="datetime" Nullable="false" />
     <Property Name="Gender" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Difficulty" Type="int" Nullable="false" />
+    <Property Name="SendNewsletter" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="ScoreSet">
     <Key>

@@ -35,6 +35,7 @@
           <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
           <ScalarProperty Name="Gender" ColumnName="Gender" />
           <ScalarProperty Name="Difficulty" ColumnName="Difficulty" />
+          <ScalarProperty Name="SendNewsletter" ColumnName="SendNewsletter" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
