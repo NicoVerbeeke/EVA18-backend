@@ -75,3 +75,6 @@ C:\Users\Nico\Documents\Projecten TILE\EVA18-backend\EVA-backend\bin\Microsoft.O
 C:\Users\Nico\Documents\Projecten TILE\EVA18-backend\EVA-backend\bin\System.Web.Http.Owin.xml
 C:\Users\Nico\Documents\Projecten TILE\EVA18-backend\EVA-backend\obj\Debug\EVA-backend.dll
 C:\Users\Nico\Documents\Projecten TILE\EVA18-backend\EVA-backend\obj\Debug\EVA-backend.pdb
+C:\Users\Nico\Documents\Projecten TILE\EVA18-backend\EVA-backend\bin\Microsoft.Owin.Cors.dll
+C:\Users\Nico\Documents\Projecten TILE\EVA18-backend\EVA-backend\bin\System.Web.Cors.dll
+C:\Users\Nico\Documents\Projecten TILE\EVA18-backend\EVA-backend\bin\Microsoft.Owin.Cors.xml

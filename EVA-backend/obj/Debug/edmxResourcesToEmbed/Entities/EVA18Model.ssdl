@@ -2,6 +2,45 @@
 <Schema Namespace="EVA18Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityContainer Name="EVA18ModelStoreContainer">
     <EntitySet Name="ChallengeSet" EntityType="EVA18Model.Store.ChallengeSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TagSet" EntityType="EVA18Model.Store.TagSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserSet" EntityType="EVA18Model.Store.UserSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ScoreSet" EntityType="EVA18Model.Store.ScoreSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RatingSet" EntityType="EVA18Model.Store.RatingSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ChallengeVariantSet" EntityType="EVA18Model.Store.ChallengeVariantSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ChallengeTag" EntityType="EVA18Model.Store.ChallengeTag" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ChallengeChallengeVariant" EntityType="EVA18Model.Store.ChallengeChallengeVariant" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_ChallengeTag_Challenge" Association="EVA18Model.Store.FK_ChallengeTag_Challenge">
+      <End Role="Challenge" EntitySet="ChallengeSet" />
+      <End Role="ChallengeTag" EntitySet="ChallengeTag" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ChallengeTag_Tag" Association="EVA18Model.Store.FK_ChallengeTag_Tag">
+      <End Role="Tag" EntitySet="TagSet" />
+      <End Role="ChallengeTag" EntitySet="ChallengeTag" />
+    </AssociationSet>
+    <AssociationSet Name="ScoreChallenge" Association="EVA18Model.Store.ScoreChallenge">
+      <End Role="Score" EntitySet="ScoreSet" />
+      <End Role="Challenge" EntitySet="ChallengeSet" />
+    </AssociationSet>
+    <AssociationSet Name="UserScore" Association="EVA18Model.Store.UserScore">
+      <End Role="User" EntitySet="UserSet" />
+      <End Role="Score" EntitySet="ScoreSet" />
+    </AssociationSet>
+    <AssociationSet Name="RatingTag" Association="EVA18Model.Store.RatingTag">
+      <End Role="Rating" EntitySet="RatingSet" />
+      <End Role="Tag" EntitySet="TagSet" />
+    </AssociationSet>
+    <AssociationSet Name="RatingUser" Association="EVA18Model.Store.RatingUser">
+      <End Role="Rating" EntitySet="RatingSet" />
+      <End Role="User" EntitySet="UserSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ChallengeChallengeVariant_Challenge" Association="EVA18Model.Store.FK_ChallengeChallengeVariant_Challenge">
+      <End Role="Challenge" EntitySet="ChallengeSet" />
+      <End Role="ChallengeChallengeVariant" EntitySet="ChallengeChallengeVariant" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ChallengeChallengeVariant_ChallengeVariant" Association="EVA18Model.Store.FK_ChallengeChallengeVariant_ChallengeVariant">
+      <End Role="ChallengeVariant" EntitySet="ChallengeVariantSet" />
+      <End Role="ChallengeChallengeVariant" EntitySet="ChallengeChallengeVariant" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="ChallengeSet">
     <Key>
@@ -11,5 +50,168 @@
     <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Image" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IsRecipeChallenge" Type="bit" Nullable="false" />
+    <Property Name="IsSocialChallenge" Type="bit" Nullable="false" />
+    <Property Name="IsRestaurantChallenge" Type="bit" Nullable="false" />
+    <Property Name="Difficulty" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="TagSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NmbrOfChildren" Type="int" Nullable="false" />
+    <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IsStudent" Type="bit" Nullable="false" />
+    <Property Name="Language" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="BirthDate" Type="datetime" Nullable="false" />
+    <Property Name="Gender" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Difficulty" Type="int" Nullable="false" />
+    <Property Name="SendNewsletter" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ScoreSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Points" Type="int" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="Challenge_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RatingSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Score" Type="int" Nullable="false" />
+    <Property Name="Tag_Id" Type="int" Nullable="false" />
+    <Property Name="User_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ChallengeVariantSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ChallengeTag">
+    <Key>
+      <PropertyRef Name="Challenge_Id" />
+      <PropertyRef Name="Tag_Id" />
+    </Key>
+    <Property Name="Challenge_Id" Type="int" Nullable="false" />
+    <Property Name="Tag_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ChallengeChallengeVariant">
+    <Key>
+      <PropertyRef Name="Challenges_Id" />
+      <PropertyRef Name="ChallengeVariants_Id" />
+    </Key>
+    <Property Name="Challenges_Id" Type="int" Nullable="false" />
+    <Property Name="ChallengeVariants_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="ScoreChallenge">
+    <End Role="Score" Type="EVA18Model.Store.ScoreSet" Multiplicity="*" />
+    <End Role="Challenge" Type="EVA18Model.Store.ChallengeSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Challenge">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Score">
+        <PropertyRef Name="Challenge_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserScore">
+    <End Role="User" Type="EVA18Model.Store.UserSet" Multiplicity="1" />
+    <End Role="Score" Type="EVA18Model.Store.ScoreSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Score">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RatingTag">
+    <End Role="Rating" Type="EVA18Model.Store.RatingSet" Multiplicity="*" />
+    <End Role="Tag" Type="EVA18Model.Store.TagSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Tag">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Rating">
+        <PropertyRef Name="Tag_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RatingUser">
+    <End Role="Rating" Type="EVA18Model.Store.RatingSet" Multiplicity="*" />
+    <End Role="User" Type="EVA18Model.Store.UserSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Rating">
+        <PropertyRef Name="User_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ChallengeTag_Challenge">
+    <End Role="Challenge" Type="EVA18Model.Store.ChallengeSet" Multiplicity="1" />
+    <End Role="ChallengeTag" Type="EVA18Model.Store.ChallengeTag" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Challenge">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ChallengeTag">
+        <PropertyRef Name="Challenge_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ChallengeTag_Tag">
+    <End Role="ChallengeTag" Type="EVA18Model.Store.ChallengeTag" Multiplicity="*" />
+    <End Role="Tag" Type="EVA18Model.Store.TagSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Tag">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ChallengeTag">
+        <PropertyRef Name="Tag_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ChallengeChallengeVariant_Challenge">
+    <End Role="Challenge" Type="EVA18Model.Store.ChallengeSet" Multiplicity="1" />
+    <End Role="ChallengeChallengeVariant" Type="EVA18Model.Store.ChallengeChallengeVariant" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Challenge">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ChallengeChallengeVariant">
+        <PropertyRef Name="Challenges_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ChallengeChallengeVariant_ChallengeVariant">
+    <End Role="ChallengeChallengeVariant" Type="EVA18Model.Store.ChallengeChallengeVariant" Multiplicity="*" />
+    <End Role="ChallengeVariant" Type="EVA18Model.Store.ChallengeVariantSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="ChallengeVariant">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ChallengeChallengeVariant">
+        <PropertyRef Name="ChallengeVariants_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

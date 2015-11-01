@@ -15,7 +15,7 @@ namespace EVA_backend.Entities
     public partial class Score
     {
         public int Id { get; set; }
-        public string Points { get; set; }
+        public int Points { get; set; }
         public int UserId { get; set; }
     
         public virtual Challenge Challenge { get; set; }
