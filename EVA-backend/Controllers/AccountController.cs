@@ -1,4 +1,5 @@
-﻿using EVA_backend.DataLayer;
+﻿using EVA_backend.Adapters;
+using EVA_backend.DataLayer;
 using EVA_backend.Entities;
 using EVA_backend.Models;
 using Microsoft.AspNet.Identity;
@@ -12,6 +13,7 @@ public class AccountController : ApiController
     private AuthRepository _repo = null;
     private AuthContext _ctx = null;
     private UserManager<UserModel> _userManager = null;
+    private UserBusinessComponentAdapter _userBCA = null;
 
     public AccountController()
     {
@@ -20,6 +22,8 @@ public class AccountController : ApiController
 
         UserStore<UserModel> userStore = new UserStore<UserModel>(_ctx);
         _userManager = new UserManager<UserModel>(userStore);
+
+        _userBCA = new UserBusinessComponentAdapter();
     }
 
     // POST api/Account/Register
@@ -40,8 +44,14 @@ public class AccountController : ApiController
         {
             return errorResult;
         }
-
         return Ok();
+    }
+
+    //GET api/Account/AccountDetails
+    [Route("AccountDetails")]
+    [Authorize]
+    public UserModel GetAccountDetails(string email) {         
+        return _userBCA.GetUserByEmail(email);
     }
 
     protected override void Dispose(bool disposing)

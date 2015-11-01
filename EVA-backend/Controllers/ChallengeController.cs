@@ -10,15 +10,24 @@ using System.Net.Http;
 using System.Web.Http;
 
 namespace EVA_backend.Controllers
-{
+{    
     [RoutePrefix("api/challenge")]
     public class ChallengeController : ApiController
     {
+
         private ChallengeBusinessComponentAdapter _challengeAdapter = new ChallengeBusinessComponentAdapter();
+
         [Authorize]
         public IEnumerable<ChallengeDataObject> Get()
         {
             return _challengeAdapter.GetChallenges();
         }       
+
+        [Route("GetChallengeVariants")]
+        public IEnumerable<String> GetRandomVariants(int number)
+        {
+            return _challengeAdapter.GetRandomVariants(number);
+        }
     }
+
 }

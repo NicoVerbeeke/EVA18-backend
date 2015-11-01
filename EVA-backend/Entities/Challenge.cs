@@ -18,6 +18,7 @@ namespace EVA_backend.Entities
         public Challenge()
         {
             this.Tag = new HashSet<Tag>();
+            this.ChallengeVariants = new HashSet<ChallengeVariant>();
         }
     
         public int Id { get; set; }
@@ -27,9 +28,11 @@ namespace EVA_backend.Entities
         public bool IsRecipeChallenge { get; set; }
         public bool IsSocialChallenge { get; set; }
         public bool IsRestaurantChallenge { get; set; }
+        public int Difficulty { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tag> Tag { get; set; }
-        public virtual Difficulty Difficulty { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ChallengeVariant> ChallengeVariants { get; set; }
     }
 }
