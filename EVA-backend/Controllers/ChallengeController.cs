@@ -28,6 +28,12 @@ namespace EVA_backend.Controllers
         {
             return _challengeAdapter.GetRandomVariants(number);
         }
+
+        [Route("GetRandomChallenges")]
+        public IEnumerable<ChallengeDataObject> GetRandomChallenges(int number, string variant)
+        {
+            return _challengeAdapter.GetRandomChallenges(number, variant);
+        }
     }
 
 }

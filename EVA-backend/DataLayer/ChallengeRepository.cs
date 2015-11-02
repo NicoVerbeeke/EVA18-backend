@@ -46,5 +46,25 @@ namespace EVA_backend.DataLayer
 
             return randomVariants;
         }
+
+        internal IEnumerable<Challenge> GetAllChallengesForVariant(string variant)
+        {
+            ChallengeVariant challengeVariant = _db.Set<ChallengeVariant>().Where(x => x.Name.Equals(variant)).FirstOrDefault();
+
+            _db.Set<Challenge>().Add(new Challenge()
+            {
+                Description = "testChallenge",
+                Difficulty = 1,
+                IsRecipeChallenge = true,
+                IsRestaurantChallenge = false,
+                IsSocialChallenge = false,
+                Title = "firstChallenge",
+                Image = "none",
+                ChallengeVariants = new List<ChallengeVariant>() { challengeVariant }
+            });
+            _db.SaveChanges();
+          
+            return challengeVariant.Challenges;
+        }
     }
 }

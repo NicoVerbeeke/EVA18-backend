@@ -48,5 +48,27 @@ namespace EVA_backend.Adapters
         {
             return _chalRepo.GetRandomVariants(number);
         }
+
+        public IEnumerable<ChallengeDataObject> GetRandomChallenges(int number, string variant)
+        {
+            List<Challenge> challenges = _chalRepo.GetAllChallengesForVariant(variant).ToList();
+            List<ChallengeDataObject> chosenChallenges = new List<ChallengeDataObject>();
+            Random r = new Random();
+
+            if (challenges.Count > 0)
+            {
+                for (int i = 0; i < number; i++)
+                {
+                    if (i < challenges.Count)
+                    {
+                        int random = r.Next(0, challenges.Count);
+                        chosenChallenges.Add(this.MapChallenge(challenges[random]));
+                        challenges.Remove(challenges[random]);
+                    }
+                }
+            }
+
+            return chosenChallenges;
+        }
     }
 }
