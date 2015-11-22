@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 10/31/2015 19:39:41
+-- Date Created: 11/14/2015 08:02:35
 -- Generated from EDMX file: C:\Users\Nico\Documents\Projecten TILE\EVA18-backend\EVA-backend\Entities\EVA18Model.edmx
 -- --------------------------------------------------
 
@@ -81,9 +81,6 @@ CREATE TABLE [dbo].[ChallengeSet] (
     [Title] nvarchar(max)  NOT NULL,
     [Image] nvarchar(max)  NOT NULL,
     [Description] nvarchar(max)  NOT NULL,
-    [IsRecipeChallenge] bit  NOT NULL,
-    [IsSocialChallenge] bit  NOT NULL,
-    [IsRestaurantChallenge] bit  NOT NULL,
     [Difficulty] int  NOT NULL
 );
 GO

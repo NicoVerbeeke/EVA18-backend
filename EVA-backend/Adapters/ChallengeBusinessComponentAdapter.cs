@@ -14,11 +14,15 @@ namespace EVA_backend.Adapters
         //Creating the datacontext
         private DbContext _db;
         private ChallengeRepository _chalRepo;
+        private ScoreRepository _scoreRepo;
+        private DbContext _auth;
 
         public ChallengeBusinessComponentAdapter()
         {
             _db = new EVA18Entities();
+            _auth = new AuthContext();
             _chalRepo = new ChallengeRepository();
+            _scoreRepo = new ScoreRepository();
         }
 
         public IEnumerable<ChallengeDataObject> GetChallenges()
@@ -42,6 +46,12 @@ namespace EVA_backend.Adapters
             dto.Description = chal.Description;
 
             return dto;
+        }
+
+        public void ChooseChallenge(string email, int challengeId)
+        {
+            User u = _db.Set<User>().Where(x => x.Email.Equals(email)).FirstOrDefault();
+            _scoreRepo.AddNewScore(u, challengeId);
         }
 
         public IEnumerable<String> GetRandomVariants(int number)
@@ -69,6 +79,11 @@ namespace EVA_backend.Adapters
             }
 
             return chosenChallenges;
+        }
+
+        public void SetUpDemoData()
+        {
+            _chalRepo.SetUpDemoData();
         }
     }
 }

@@ -1,10 +1,11 @@
 DELETE [dbo].[ChallengeTag]
 DELETE [dbo].[ScoreSet]
 DELETE [dbo].[RatingSet]
+DELETE [dbo].[ChallengeVariantSet]
 DELETE [dbo].[ChallengeSet]
 DELETE [dbo].[TagSet]
 DELETE [dbo].[UserSet]
-DELETE [dbo].[ChallengeVariantSet]
+
 
 GO
 
