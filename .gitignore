@@ -44,3 +44,6 @@ Temporary Items
 EVA-backend/Controllers/ChallengeController.cs
 *.config
 *.pdb
+*.dll
+*.dll
+*.pdb
