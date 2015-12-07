@@ -14,11 +14,15 @@ namespace EVA_backend.Adapters
         //Creating the datacontext
         private DbContext _db;
         private ChallengeRepository _chalRepo;
+        private ScoreRepository _scoreRepo;
+        private DbContext _auth;
 
         public ChallengeBusinessComponentAdapter()
         {
             _db = new EVA18Entities();
+            _auth = new AuthContext();
             _chalRepo = new ChallengeRepository();
+            _scoreRepo = new ScoreRepository();
         }
 
         public IEnumerable<ChallengeDataObject> GetChallenges()
@@ -44,9 +48,42 @@ namespace EVA_backend.Adapters
             return dto;
         }
 
+        public void ChooseChallenge(string email, int challengeId)
+        {
+            User u = _db.Set<User>().Where(x => x.Email.Equals(email)).FirstOrDefault();
+            _scoreRepo.AddNewScore(u, challengeId);
+        }
+
         public IEnumerable<String> GetRandomVariants(int number)
         {
             return _chalRepo.GetRandomVariants(number);
+        }
+
+        public IEnumerable<ChallengeDataObject> GetRandomChallenges(int number, string variant)
+        {
+            List<Challenge> challenges = _chalRepo.GetAllChallengesForVariant(variant).ToList();
+            List<ChallengeDataObject> chosenChallenges = new List<ChallengeDataObject>();
+            Random r = new Random();
+
+            if (challenges.Count > 0)
+            {
+                for (int i = 0; i < number; i++)
+                {
+                    if (i < challenges.Count)
+                    {
+                        int random = r.Next(0, challenges.Count);
+                        chosenChallenges.Add(this.MapChallenge(challenges[random]));
+                        challenges.Remove(challenges[random]);
+                    }
+                }
+            }
+
+            return chosenChallenges;
+        }
+
+        public void SetUpDemoData()
+        {
+            _chalRepo.SetUpDemoData();
         }
     }
 }

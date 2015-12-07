@@ -17,16 +17,48 @@ namespace EVA_backend.Controllers
 
         private ChallengeBusinessComponentAdapter _challengeAdapter = new ChallengeBusinessComponentAdapter();
 
+        [Route("testconnection")]
+        [AcceptVerbs("GET")]
+        public String TestConnection()
+        {
+            return "it worked";
+        }
+
         [Authorize]
         public IEnumerable<ChallengeDataObject> Get()
         {
             return _challengeAdapter.GetChallenges();
         }       
 
-        [Route("GetChallengeVariants")]
+        
+
+        [Route("GetChallengeVariants/{number}")]
+        [AcceptVerbs("GET")]
         public IEnumerable<String> GetRandomVariants(int number)
         {
             return _challengeAdapter.GetRandomVariants(number);
+        }
+
+        [Authorize]
+        [Route("GetRandomChallenges")]
+        public IEnumerable<ChallengeDataObject> GetRandomChallenges(int number, string variant)
+        {
+            return _challengeAdapter.GetRandomChallenges(number, variant);
+        }
+
+        [Authorize]
+        [AcceptVerbs("POST")]
+        [Route("ChooseChallenge")]
+        public void ChooseChallenge([FromBody] string email, [FromBody] int challengeId)
+        {
+            _challengeAdapter.ChooseChallenge(email, challengeId);
+        }
+
+        [AcceptVerbs("GET")]
+        [Route("SetUpDemoData")]
+        public void SetUpDemoData()
+        {
+            _challengeAdapter.SetUpDemoData();
         }
     }
 

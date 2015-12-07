@@ -43,3 +43,9 @@ Temporary Items
 .apdisk
 EVA-backend/Controllers/ChallengeController.cs
 *.config
+*.pdb
+*.dll
+*.dll
+*.pdb
+*.dll
+*.pdb

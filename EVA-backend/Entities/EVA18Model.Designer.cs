@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\Nico\Documents\Projecten TILE\EVA18-backend\EVA-backend\Entities\EVA18Model.edmx'. 
+﻿// T4 code generation is enabled for model 'D:\Program Files Extension\EvaProject\EVA18-backend\EVA-backend\Entities\EVA18Model.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.
