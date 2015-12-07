@@ -36,18 +36,22 @@ namespace EVA_backend.Adapters
 
         public UserModel MapToUserModel(User entity)
         {
-            return new UserModel()
+            if (entity != null)
             {
-                NmbrOfChildren = entity.NmbrOfChildren,
-                Email = entity.Email,
-                UserName = entity.Email,
-                IsStudent = entity.IsStudent,
-                Language = entity.Language,
-                BirthDate = entity.BirthDate,
-                Gender = entity.Gender,
-                Difficulty = entity.Difficulty,
-                SendNewsletter = entity.SendNewsletter
-            };
+                return new UserModel()
+                {
+                    NmbrOfChildren = entity.NmbrOfChildren,
+                    Email = entity.Email,
+                    UserName = entity.Email,
+                    IsStudent = entity.IsStudent,
+                    Language = entity.Language,
+                    BirthDate = entity.BirthDate,
+                    Gender = entity.Gender,
+                    Difficulty = entity.Difficulty,
+                    SendNewsletter = entity.SendNewsletter
+                };
+            }
+            else return new UserModel();
         }
 
         public int  InsertUser(UserModel dto)
