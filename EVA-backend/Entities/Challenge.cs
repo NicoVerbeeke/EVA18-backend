@@ -25,9 +25,6 @@ namespace EVA_backend.Entities
         public string Title { get; set; }
         public string Image { get; set; }
         public string Description { get; set; }
-        public bool IsRecipeChallenge { get; set; }
-        public bool IsSocialChallenge { get; set; }
-        public bool IsRestaurantChallenge { get; set; }
         public int Difficulty { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
