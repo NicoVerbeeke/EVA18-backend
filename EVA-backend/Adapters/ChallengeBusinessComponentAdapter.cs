@@ -40,10 +40,13 @@ namespace EVA_backend.Adapters
 
         public ChallengeDataObject MapChallenge(Challenge chal)
         {
+            Random r = new Random();
             ChallengeDataObject dto = new ChallengeDataObject();
             dto.Title = chal.Title;
             dto.Image = chal.Image;
             dto.Description = chal.Description;
+            dto.Difficulty = chal.Difficulty;
+            dto.Variant = chal.ChallengeVariants.First().Name;
 
             return dto;
         }
