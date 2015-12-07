@@ -49,3 +49,5 @@ EVA-backend/Controllers/ChallengeController.cs
 *.pdb
 *.dll
 *.pdb
+EVA-backend/Web.config
+EVA-backend/Web.config
