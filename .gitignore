@@ -47,3 +47,5 @@ EVA-backend/Controllers/ChallengeController.cs
 *.dll
 *.dll
 *.pdb
+*.dll
+*.pdb
