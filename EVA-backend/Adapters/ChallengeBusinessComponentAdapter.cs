@@ -59,25 +59,38 @@ namespace EVA_backend.Adapters
             return _chalRepo.GetRandomVariants(number);
         }
 
-        public IEnumerable<ChallengeDataObject> GetRandomChallenges(int number, string variant)
+        public IEnumerable<ChallengeDataObject> GetRandomChallenges(int number)
         {
-            List<Challenge> challenges = _chalRepo.GetAllChallengesForVariant(variant).ToList();
-            List<ChallengeDataObject> chosenChallenges = new List<ChallengeDataObject>();
+            
+            List<String> variants = _chalRepo.GetAllChallengeVariants().ToList();
             Random r = new Random();
-
-            if (challenges.Count > 0)
+            List<ChallengeDataObject> chosenChallenges = new List<ChallengeDataObject>();
+            List<Challenge> challenges = _chalRepo.GetAllChallenges().ToList();
+            if(challenges.Count < number)
             {
-                for (int i = 0; i < number; i++)
+                number = challenges.Count;
+            }
+            while(chosenChallenges.Count < number) { 
+                do
                 {
-                    if (i < challenges.Count)
-                    {
-                        int random = r.Next(0, challenges.Count);
-                        chosenChallenges.Add(this.MapChallenge(challenges[random]));
-                        challenges.Remove(challenges[random]);
+                    int randomVariant = r.Next(0, variants.Count);
+                    challenges = _chalRepo.GetAllChallengesForVariant(variants[randomVariant]).ToList();
+                } while (challenges.Count <= 0);
+                int random;          
+                random = r.Next(0, challenges.Count);
+                ChallengeDataObject candidate = MapChallenge(challenges[random]);
+                bool distinct = true;
+                foreach(ChallengeDataObject c in chosenChallenges)
+                {
+                    if (c.Title.Equals(candidate.Title)){
+                        distinct = false;
                     }
                 }
-            }
 
+                if (distinct) {
+                    chosenChallenges.Add(candidate);
+                }
+            }                  
             return chosenChallenges;
         }
 
