@@ -40,9 +40,6 @@
     <Property Name="Title" Type="String" Nullable="false" />
     <Property Name="Image" Type="String" Nullable="false" />
     <Property Name="Description" Type="String" Nullable="false" />
-    <Property Name="IsRecipeChallenge" Type="Boolean" Nullable="false" />
-    <Property Name="IsSocialChallenge" Type="Boolean" Nullable="false" />
-    <Property Name="IsRestaurantChallenge" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="Tag" Relationship="EVA18Model.ChallengeTag" FromRole="Challenge" ToRole="Tag" />
     <Property Name="Difficulty" Type="Int32" Nullable="false" />
     <NavigationProperty Name="ChallengeVariants" Relationship="EVA18Model.ChallengeChallengeVariant" FromRole="Challenge" ToRole="ChallengeVariant" />

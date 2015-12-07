@@ -29,10 +29,26 @@ namespace EVA_backend.Controllers
             return _challengeAdapter.GetRandomVariants(number);
         }
 
+        [Authorize]
         [Route("GetRandomChallenges")]
         public IEnumerable<ChallengeDataObject> GetRandomChallenges(int number, string variant)
         {
             return _challengeAdapter.GetRandomChallenges(number, variant);
+        }
+
+        [Authorize]
+        [AcceptVerbs("POST")]
+        [Route("ChooseChallenge")]
+        public void ChooseChallenge([FromBody] string email, [FromBody] int challengeId)
+        {
+            _challengeAdapter.ChooseChallenge(email, challengeId);
+        }
+
+        [AcceptVerbs("GET")]
+        [Route("SetUpDemoData")]
+        public void SetUpDemoData()
+        {
+            _challengeAdapter.SetUpDemoData();
         }
     }
 

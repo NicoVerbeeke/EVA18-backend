@@ -50,9 +50,6 @@
     <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Image" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="IsRecipeChallenge" Type="bit" Nullable="false" />
-    <Property Name="IsSocialChallenge" Type="bit" Nullable="false" />
-    <Property Name="IsRestaurantChallenge" Type="bit" Nullable="false" />
     <Property Name="Difficulty" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="TagSet">

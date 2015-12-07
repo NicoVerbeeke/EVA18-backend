@@ -8,9 +8,6 @@
           <ScalarProperty Name="Title" ColumnName="Title" />
           <ScalarProperty Name="Image" ColumnName="Image" />
           <ScalarProperty Name="Description" ColumnName="Description" />
-          <ScalarProperty Name="IsRecipeChallenge" ColumnName="IsRecipeChallenge" />
-          <ScalarProperty Name="IsSocialChallenge" ColumnName="IsSocialChallenge" />
-          <ScalarProperty Name="IsRestaurantChallenge" ColumnName="IsRestaurantChallenge" />
           <ScalarProperty Name="Difficulty" ColumnName="Difficulty" />
         </MappingFragment>
       </EntityTypeMapping>
