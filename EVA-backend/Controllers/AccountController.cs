@@ -48,10 +48,18 @@ public class AccountController : ApiController
     }
 
     //GET api/Account/AccountDetails
+    
     [Route("AccountDetails")]
+    [AcceptVerbs("GET")]
     [Authorize]
     public UserModel GetAccountDetails(string email) {         
-        return _userBCA.GetUserByEmail(email);
+        UserModel result = _userBCA.GetUserByEmail(email);
+
+        if (string.IsNullOrEmpty(result.UserName))
+        {
+            return new UserModel();
+        }
+        return result;
     }
 
     protected override void Dispose(bool disposing)
