@@ -13,5 +13,9 @@ namespace EVA_backend.DataModels
 
         //Link to an image
         public String Image { get; set; }
+
+        public int Difficulty { get; set; }
+
+        public String Variant { get; set; }
     }
 }
