@@ -40,10 +40,10 @@ namespace EVA_backend.Controllers
         }
 
         [Authorize]
-        [Route("GetRandomChallenges")]
-        public IEnumerable<ChallengeDataObject> GetRandomChallenges(int number, string variant)
+        [Route("GetRandomChallenges/{number}")]
+        public IEnumerable<ChallengeDataObject> GetRandomChallenges(int number)
         {
-            return _challengeAdapter.GetRandomChallenges(number, variant);
+            return _challengeAdapter.GetRandomChallenges(number);
         }
 
         [Authorize]

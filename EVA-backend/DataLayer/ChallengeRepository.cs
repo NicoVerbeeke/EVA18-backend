@@ -54,6 +54,11 @@ namespace EVA_backend.DataLayer
             return challengeVariant.Challenges;
         }
 
+        public IEnumerable<Challenge> GetAllChallenges()
+        {
+            return _db.Set<Challenge>();
+        }
+
         public void SetUpDemoData()
         {
             List<ChallengeVariant> challengeVariants = _db.Set<ChallengeVariant>().ToList();
