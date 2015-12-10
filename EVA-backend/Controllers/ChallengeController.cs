@@ -54,6 +54,14 @@ namespace EVA_backend.Controllers
             _challengeAdapter.ChooseChallenge(email, challengeId);
         }
 
+        [Authorize]
+        [AcceptVerbs("POST")]
+        [Route("CompleteChallenge")]
+        public void CompleteChallenge([FromBody] string email, [FromBody] int challengeId, [FromBody] bool passed)
+        {
+            _challengeAdapter.CompleteChallenge(email, challengeId, passed);
+        }
+
         [AcceptVerbs("GET")]
         [Route("SetUpDemoData")]
         public void SetUpDemoData()
