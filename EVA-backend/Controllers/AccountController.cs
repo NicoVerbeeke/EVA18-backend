@@ -62,6 +62,15 @@ public class AccountController : ApiController
         return result;
     }
 
+    [Route("AccountAccomplishements")]
+    [AcceptVerbs("GET")]
+    [Authorize]
+    public ScoreModel GetAccountAccomplishments(string email)
+    {
+        return _userBCA.GetUserAccomplishments(email);
+    }
+
+
     protected override void Dispose(bool disposing)
     {
         if (disposing)

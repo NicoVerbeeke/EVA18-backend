@@ -10,19 +10,22 @@ namespace EVA_backend.DataLayer
     public class ScoreRepository
     {
         //Creating the datacontext
-        private DbContext _db = new EVA18Entities();
+        private DbContext _db = Eva18Singleton.Db;
 
         public void AddNewScore(User u, int challengeId)
         {
             Challenge challenge = _db.Set<Challenge>().Where(x => x.Id == challengeId).FirstOrDefault();
 
-            _db.Set<Score>().Add(new Score()
+            Score score = new Score()
             {
                 Challenge = challenge,
                 User = u,
                 UserId = u.Id,
                 Points = 0
-            });
+            };
+
+            _db.Set<Score>().Add(score);
+            _db.SaveChanges();
         }
 
         private int CalculateScore(int userDifficulty, int challengeDifficulty)

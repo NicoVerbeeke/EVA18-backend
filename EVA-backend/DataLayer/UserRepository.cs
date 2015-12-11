@@ -10,7 +10,7 @@ namespace EVA_backend.DataLayer
     public class UserRepository
     {
         //Creating the datacontext
-        private DbContext _db = new EVA18Entities();
+        private DbContext _db = Eva18Singleton.Db;
 
         public int InsertUser(User u)
         {

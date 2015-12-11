@@ -12,10 +12,14 @@ namespace EVA_backend.Adapters
 {
     public class UserBusinessComponentAdapter
     {
-        private UserRepository _uRepo;   
+        private UserRepository _uRepo;
+        private ScoreRepository _scoreRepo;
+        private ChallengeBusinessComponentAdapter _chalBCA;
         public UserBusinessComponentAdapter()
         {
             _uRepo = new UserRepository();
+            _scoreRepo = new ScoreRepository();
+            _chalBCA = new ChallengeBusinessComponentAdapter(); 
         }
 
         public User MapToUser(UserModel dto)
@@ -52,6 +56,59 @@ namespace EVA_backend.Adapters
                 };
             }
             else return new UserModel();
+        }
+
+        public ScoreModel GetUserAccomplishments(String email)
+        {
+            User u = _uRepo.GetUserByEmail(email);
+            List<Score> scores = _scoreRepo.GetAllUserScores(u);
+            List<VariantScoreModel> vScoreModels = new List<VariantScoreModel>();
+            List<ChallengeDataObject> challenges = new List<ChallengeDataObject>();
+            int totalScore = 0;
+            int totalChallengesCompleted = 0;
+
+            foreach(Score s in scores)
+            {
+                ChallengeDataObject chal = _chalBCA.MapChallenge(s.Challenge);
+
+                bool vScoreModelPresent = false;
+                foreach(VariantScoreModel v in vScoreModels)
+                {
+                    if (v.Variant.Equals(chal.Variant))
+                    {
+                        vScoreModelPresent = true;
+                        if (s.Points > 0)
+                        {
+                            v.CompletedVariantChallenges += 1;
+                            v.Score += s.Points;
+                            totalChallengesCompleted += 1;
+                        }
+
+                    }
+                }
+
+                if (!vScoreModelPresent)
+                {
+                    VariantScoreModel vScoreModel = new VariantScoreModel();
+                    vScoreModels.Add(vScoreModel);
+
+                    if (s.Points > 0)
+                    {
+                        vScoreModel.CompletedVariantChallenges = 1;
+                        vScoreModel.Score = s.Points;
+                        totalChallengesCompleted += 1;
+                    }
+                }
+
+                totalScore += s.Points;
+            }
+
+            ScoreModel scoreModel = new ScoreModel();
+            scoreModel.TotalScore = totalScore;
+            scoreModel.TotalChallengesCompleted = totalChallengesCompleted;
+            scoreModel.VariantScores = vScoreModels;
+
+            return scoreModel;
         }
 
         public int  InsertUser(UserModel dto)

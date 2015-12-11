@@ -19,7 +19,7 @@ namespace EVA_backend.Adapters
 
         public ChallengeBusinessComponentAdapter()
         {
-            _db = new EVA18Entities();
+            _db = Eva18Singleton.Db;
             _auth = new AuthContext();
             _chalRepo = new ChallengeRepository();
             _scoreRepo = new ScoreRepository();
