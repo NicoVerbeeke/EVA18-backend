@@ -62,7 +62,7 @@ public class AccountController : ApiController
         return result;
     }
 
-    [Route("AccountAccomplishements")]
+    [Route("AccountAccomplishments")]
     [AcceptVerbs("GET")]
     [Authorize]
     public ScoreModel GetAccountAccomplishments(string email)

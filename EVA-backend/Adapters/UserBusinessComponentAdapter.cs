@@ -82,7 +82,7 @@ namespace EVA_backend.Adapters
                             v.CompletedVariantChallenges += 1;
                             v.Score += s.Points;
                             totalChallengesCompleted += 1;
-                        }
+                        }                      
 
                     }
                 }
@@ -96,7 +96,13 @@ namespace EVA_backend.Adapters
                     {
                         vScoreModel.CompletedVariantChallenges = 1;
                         vScoreModel.Score = s.Points;
+                        vScoreModel.Variant = chal.Variant;
                         totalChallengesCompleted += 1;
+                    }
+                    else
+                    {
+                        vScoreModel.Score = 0;
+                        vScoreModel.CompletedVariantChallenges = 0;
                     }
                 }
 

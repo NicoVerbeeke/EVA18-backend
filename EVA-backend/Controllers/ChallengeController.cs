@@ -51,15 +51,15 @@ namespace EVA_backend.Controllers
         [Route("ChooseChallenge")]
         public void ChooseChallenge(ChooseChallengeHelper helper)
         {
-            _challengeAdapter.ChooseChallenge(helper.email, helper.challengeId);
+            _challengeAdapter.ChooseChallenge(helper.Email, helper.ChallengeId);
         }
 
         [Authorize]
         [AcceptVerbs("POST")]
         [Route("CompleteChallenge")]
-        public void CompleteChallenge([FromBody] string email, [FromBody] int challengeId, [FromBody] bool passed)
+        public void CompleteChallenge(CompleteChallengeHelper helper)
         {
-            _challengeAdapter.CompleteChallenge(email, challengeId, passed);
+            _challengeAdapter.CompleteChallenge(helper.Email, helper.ChallengeId, helper.Passed);
         }
 
         [AcceptVerbs("GET")]
@@ -74,13 +74,13 @@ namespace EVA_backend.Controllers
 
 public class ChooseChallengeHelper
 {
-    public String email { get; set; }
-    public int challengeId { get; set; }
+    public String Email { get; set; }
+    public int ChallengeId { get; set; }
 }
 
 public class CompleteChallengeHelper
 {
-    public String email { get; set; }
-    public int challengeId { get; set; }
+    public String Email { get; set; }
+    public int ChallengeId { get; set; }
     public bool Passed { get; set; }
 }
