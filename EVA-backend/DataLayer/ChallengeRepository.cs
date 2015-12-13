@@ -11,7 +11,7 @@ namespace EVA_backend.DataLayer
     {
 
         //Creating the datacontext
-        private DbContext _db = new EVA18Entities();
+        private DbContext _db = Eva18Singleton.Db;
 
         public IEnumerable<String> GetAllChallengeVariants()
         {
@@ -52,6 +52,11 @@ namespace EVA_backend.DataLayer
             ChallengeVariant challengeVariant = _db.Set<ChallengeVariant>().Where(x => x.Name.Equals(variant)).FirstOrDefault();         
           
             return challengeVariant.Challenges;
+        }
+
+        public IEnumerable<Challenge> GetAllChallenges()
+        {
+            return _db.Set<Challenge>();
         }
 
         public void SetUpDemoData()

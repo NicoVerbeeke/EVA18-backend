@@ -40,18 +40,26 @@ namespace EVA_backend.Controllers
         }
 
         [Authorize]
-        [Route("GetRandomChallenges")]
-        public IEnumerable<ChallengeDataObject> GetRandomChallenges(int number, string variant)
+        [Route("GetRandomChallenges/{number}")]
+        public IEnumerable<ChallengeDataObject> GetRandomChallenges(int number)
         {
-            return _challengeAdapter.GetRandomChallenges(number, variant);
+            return _challengeAdapter.GetRandomChallenges(number);
         }
 
         [Authorize]
         [AcceptVerbs("POST")]
         [Route("ChooseChallenge")]
-        public void ChooseChallenge([FromBody] string email, [FromBody] int challengeId)
+        public void ChooseChallenge(ChooseChallengeHelper helper)
         {
-            _challengeAdapter.ChooseChallenge(email, challengeId);
+            _challengeAdapter.ChooseChallenge(helper.Email, helper.ChallengeId);
+        }
+
+        [Authorize]
+        [AcceptVerbs("POST")]
+        [Route("CompleteChallenge")]
+        public void CompleteChallenge(CompleteChallengeHelper helper)
+        {
+            _challengeAdapter.CompleteChallenge(helper.Email, helper.ChallengeId, helper.Passed);
         }
 
         [AcceptVerbs("GET")]
@@ -62,4 +70,17 @@ namespace EVA_backend.Controllers
         }
     }
 
+}
+
+public class ChooseChallengeHelper
+{
+    public String Email { get; set; }
+    public int ChallengeId { get; set; }
+}
+
+public class CompleteChallengeHelper
+{
+    public String Email { get; set; }
+    public int ChallengeId { get; set; }
+    public bool Passed { get; set; }
 }
