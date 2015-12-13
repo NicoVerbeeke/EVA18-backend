@@ -201,6 +201,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DataLayer\AuthRepository.cs" />
     <Compile Include="DataLayer\ChallengeRepository.cs" />
+    <Compile Include="DataLayer\Eva18Singleton.cs" />
     <Compile Include="DataLayer\ScoreRepository.cs" />
     <Compile Include="DataLayer\UserRepository.cs" />
     <Compile Include="DataModels\ChallengeDataObject.cs" />
@@ -243,8 +244,10 @@
     </Compile>
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ScoreModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\UserModel.cs" />
+    <Compile Include="Models\VariantScoreModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
