@@ -82,6 +82,8 @@
     <NavigationProperty Name="Challenge" Relationship="EVA18Model.ScoreChallenge" FromRole="Score" ToRole="Challenge" />
     <NavigationProperty Name="User" Relationship="EVA18Model.UserScore" FromRole="Score" ToRole="User" />
     <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="Completed" Type="Boolean" Nullable="false" />
+    <Property Name="TimeStarted" Type="DateTime" Nullable="false" />
   </EntityType>
   <Association Name="ScoreChallenge">
     <End Type="EVA18Model.Score" Role="Score" Multiplicity="*" />

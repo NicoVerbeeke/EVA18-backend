@@ -1,6 +1,7 @@
 ﻿using EVA_backend.DataLayer;
 using EVA_backend.DataModels;
 using EVA_backend.Entities;
+using EVA_backend.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -15,6 +16,7 @@ namespace EVA_backend.Adapters
         private DbContext _db;
         private ChallengeRepository _chalRepo;
         private ScoreRepository _scoreRepo;
+        private UserRepository _userRepo;
         private DbContext _auth;
 
         public ChallengeBusinessComponentAdapter()
@@ -23,6 +25,7 @@ namespace EVA_backend.Adapters
             _auth = new AuthContext();
             _chalRepo = new ChallengeRepository();
             _scoreRepo = new ScoreRepository();
+            _userRepo = new UserRepository();
         }
 
         public IEnumerable<ChallengeDataObject> GetChallenges()
@@ -37,6 +40,53 @@ namespace EVA_backend.Adapters
 
             return mappedChallenges.AsEnumerable();
         }
+
+        public ChosenChallenge IsChallengeChosen(string email)
+        {
+            User u = _userRepo.GetUserByEmail(email);
+            Score s = _scoreRepo.GetLastValidUserScore(u);
+            DateTime dayLaterThenStartTime = DateTime.Now;
+            if (s != null)
+            {
+                DateTime d = s.TimeStarted;
+                dayLaterThenStartTime = new DateTime(d.Year, d.Month, d.Day + 1, d.Hour, d.Minute, d.Second);
+            }
+            ChosenChallenge challengeChosen = new ChosenChallenge();
+
+            if (s==null || (DateTime.Now > dayLaterThenStartTime))
+            {
+                challengeChosen.ChallengeChosen = false;
+            }
+            else {
+                challengeChosen.ChallengeChosen = true;
+            }
+
+            if (s != null && s.Challenge != null)
+            {
+                challengeChosen.CurrentChallenge = MapChallenge(s.Challenge);
+            }
+            else
+            {
+                challengeChosen.CurrentChallenge = new ChallengeDataObject();
+            }
+            return challengeChosen;
+        }
+
+        public Boolean IsChallengeChosen(Score s)
+        {
+            Boolean IsChallengeChosen = false;
+
+            if (s != null)
+            {
+                if (!s.Completed)
+                {
+                    IsChallengeChosen = true;
+                }
+            }
+
+            return IsChallengeChosen;
+        }
+
 
         public ChallengeDataObject MapChallenge(Challenge chal)
         {
@@ -64,7 +114,6 @@ namespace EVA_backend.Adapters
             {
                 _scoreRepo.UpdateScore(u, challengeId);
             }
-
         }
 
         public IEnumerable<String> GetRandomVariants(int number)

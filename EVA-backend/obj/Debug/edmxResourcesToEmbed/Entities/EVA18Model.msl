@@ -42,6 +42,8 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Points" ColumnName="Points" />
           <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Completed" ColumnName="Completed" />
+          <ScalarProperty Name="TimeStarted" ColumnName="TimeStarted" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -86,6 +86,8 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Points" Type="int" Nullable="false" />
     <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="Completed" Type="bit" Nullable="false" />
+    <Property Name="TimeStarted" Type="datetime" Nullable="false" />
     <Property Name="Challenge_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="RatingSet">
@@ -302,6 +304,8 @@
           <NavigationProperty Name="Challenge" Relationship="EVA18Model.ScoreChallenge" FromRole="Score" ToRole="Challenge" />
           <NavigationProperty Name="User" Relationship="EVA18Model.UserScore" FromRole="Score" ToRole="User" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Completed" Type="Boolean" Nullable="false" />
+          <Property Name="TimeStarted" Type="DateTime" Nullable="false" />
         </EntityType>
         <Association Name="ScoreChallenge">
           <End Type="EVA18Model.Score" Role="Score" Multiplicity="*" />
@@ -395,6 +399,8 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Points" ColumnName="Points" />
           <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Completed" ColumnName="Completed" />
+          <ScalarProperty Name="TimeStarted" ColumnName="TimeStarted" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

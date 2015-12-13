@@ -1,6 +1,7 @@
 ﻿using EVA_backend.Adapters;
 using EVA_backend.DataModels;
 using EVA_backend.Entities;
+using EVA_backend.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -16,6 +17,7 @@ namespace EVA_backend.Controllers
     {
 
         private ChallengeBusinessComponentAdapter _challengeAdapter = new ChallengeBusinessComponentAdapter();
+        private UserBusinessComponentAdapter _userAdapter = new UserBusinessComponentAdapter();
 
         [Route("testconnection")]
         [AcceptVerbs("GET")]
@@ -67,6 +69,13 @@ namespace EVA_backend.Controllers
         public void SetUpDemoData()
         {
             _challengeAdapter.SetUpDemoData();
+        }
+
+        [AcceptVerbs("GET")]
+        [Route("getchosenchallenge")]
+        public ChosenChallenge GetChosenChallenge(string email)
+        {
+            return _userAdapter.GetActiveChallenge(email);
         }
     }
 

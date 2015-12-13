@@ -12,7 +12,7 @@
         <EntityTypeShape EntityType="EVA18Model.Score" Width="1.5" PointX="2.75" PointY="0.875" />
         <AssociationConnector Association="EVA18Model.ScoreChallenge" />
         <AssociationConnector Association="EVA18Model.UserScore" />
-        <EntityTypeShape EntityType="EVA18Model.Rating" Width="1.5" PointX="2.75" PointY="3" />
+        <EntityTypeShape EntityType="EVA18Model.Rating" Width="1.5" PointX="2.75" PointY="3.625" />
         <AssociationConnector Association="EVA18Model.RatingTag" />
         <AssociationConnector Association="EVA18Model.RatingUser" />
         <EntityTypeShape EntityType="EVA18Model.ChallengeVariant" Width="1.5" PointX="7.625" PointY="0.875" />

@@ -17,6 +17,8 @@ namespace EVA_backend.Entities
         public int Id { get; set; }
         public int Points { get; set; }
         public int UserId { get; set; }
+        public bool Completed { get; set; }
+        public System.DateTime TimeStarted { get; set; }
     
         public virtual Challenge Challenge { get; set; }
         public virtual User User { get; set; }

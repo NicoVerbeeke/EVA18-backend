@@ -244,6 +244,7 @@
     </Compile>
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ChosenChallenge.cs" />
     <Compile Include="Models\ScoreModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\UserModel.cs" />

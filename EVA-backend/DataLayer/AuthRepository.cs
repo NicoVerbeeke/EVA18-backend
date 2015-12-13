@@ -31,8 +31,12 @@ namespace EVA_backend.DataLayer
                 UserName = userModel.UserName
             };
             IdentityResult result = null;
-            result = await _userManager.CreateAsync(user, userModel.Password);
-
+            try {
+                result = await _userManager.CreateAsync(user, userModel.Password);
+            }catch(Exception e)
+            {
+                var b = true;
+            }
             if (result.Succeeded)
             {
                 _userBCA.InsertUser(userModel);

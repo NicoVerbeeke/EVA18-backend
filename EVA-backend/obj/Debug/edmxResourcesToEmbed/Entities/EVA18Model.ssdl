@@ -81,6 +81,8 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Points" Type="int" Nullable="false" />
     <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="Completed" Type="bit" Nullable="false" />
+    <Property Name="TimeStarted" Type="datetime" Nullable="false" />
     <Property Name="Challenge_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="RatingSet">

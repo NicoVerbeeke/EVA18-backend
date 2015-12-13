@@ -56,7 +56,7 @@ namespace EVA_backend.Adapters
                 };
             }
             else return new UserModel();
-        }
+        } 
 
         public ScoreModel GetUserAccomplishments(String email)
         {
@@ -119,7 +119,7 @@ namespace EVA_backend.Adapters
 
         public int  InsertUser(UserModel dto)
         {
-            //first map to user then insert the new entity into the db
+          //first map to user then insert the new entity into the db
           return _uRepo.InsertUser(MapToUser(dto));
         }
 
@@ -131,6 +131,11 @@ namespace EVA_backend.Adapters
         public void DeleteUser(UserModel dto)
         {
             _uRepo.DeleteUser(MapToUser(dto));
+        }
+
+        public ChosenChallenge GetActiveChallenge(string email)
+        {
+           return _chalBCA.IsChallengeChosen(email);
         }
     }
 }
