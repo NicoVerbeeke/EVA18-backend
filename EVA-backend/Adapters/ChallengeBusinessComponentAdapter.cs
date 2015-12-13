@@ -19,7 +19,7 @@ namespace EVA_backend.Adapters
 
         public ChallengeBusinessComponentAdapter()
         {
-            _db = new EVA18Entities();
+            _db = Eva18Singleton.Db;
             _auth = new AuthContext();
             _chalRepo = new ChallengeRepository();
             _scoreRepo = new ScoreRepository();
@@ -42,12 +42,12 @@ namespace EVA_backend.Adapters
         {
             Random r = new Random();
             ChallengeDataObject dto = new ChallengeDataObject();
+            dto.Id = chal.Id;
             dto.Title = chal.Title;
             dto.Image = chal.Image;
             dto.Description = chal.Description;
             dto.Difficulty = chal.Difficulty;
             dto.Variant = chal.ChallengeVariants.First().Name;
-
             return dto;
         }
 
@@ -55,6 +55,16 @@ namespace EVA_backend.Adapters
         {
             User u = _db.Set<User>().Where(x => x.Email.Equals(email)).FirstOrDefault();
             _scoreRepo.AddNewScore(u, challengeId);
+        }
+
+        public void CompleteChallenge( string email, int challengeId, bool passed)
+        {
+            User u = _db.Set<User>().Where(x => x.Email.Equals(email)).FirstOrDefault();
+            if (u != null && passed)
+            {
+                _scoreRepo.UpdateScore(u, challengeId);
+            }
+
         }
 
         public IEnumerable<String> GetRandomVariants(int number)
