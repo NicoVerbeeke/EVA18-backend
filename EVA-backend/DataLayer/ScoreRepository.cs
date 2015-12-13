@@ -54,10 +54,8 @@ namespace EVA_backend.DataLayer
             DateTime lastValidTime = DateTime.Now;
             lastValidTime = new DateTime(lastValidTime.Year, lastValidTime.Month, (lastValidTime.Day - 1), lastValidTime.Hour, lastValidTime.Minute, lastValidTime.Second);
 
-            return _db.Set<Score>().Where(x => x.TimeStarted > lastValidTime).FirstOrDefault();
-        }
-
-        
+            return _db.Set<Score>().Where(x => ((x.UserId == u.Id) && (x.TimeStarted > lastValidTime))).FirstOrDefault();
+        }        
 
         public int GetUserScore(User u)
         {
