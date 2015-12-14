@@ -55,3 +55,4 @@ EVA-backend/bin/EVA-backend.dll
 *.dll
 EVA-backend/bin/EVA-backend.pdb
 *.suo
+*.pdb

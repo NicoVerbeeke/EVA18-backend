@@ -135,12 +135,15 @@ namespace EVA_backend.Adapters
             while(chosenChallenges.Count < number) { 
                 do
                 {
-                    int randomVariant = r.Next(0, variants.Count);
+                    int randomVariant = r.Next(0, 2);
                     challenges = _chalRepo.GetAllChallengesForVariant(variants[randomVariant]).ToList();
                 } while (challenges.Count <= 0);
                 int random;          
                 random = r.Next(0, challenges.Count);
-                ChallengeDataObject candidate = MapChallenge(challenges[random]);
+
+                _db.Entry(challenges[random]).Reload();
+                Challenge ch = _db.Set<Challenge>().Find(challenges[random].Id);
+                ChallengeDataObject candidate = MapChallenge(ch);
                 bool distinct = true;
                 foreach(ChallengeDataObject c in chosenChallenges)
                 {

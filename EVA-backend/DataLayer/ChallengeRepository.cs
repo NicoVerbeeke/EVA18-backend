@@ -12,7 +12,6 @@ namespace EVA_backend.DataLayer
 
         //Creating the datacontext
         private DbContext _db = Eva18Singleton.Db;
-
         public IEnumerable<String> GetAllChallengeVariants()
         {
             IEnumerable<ChallengeVariant> challengeVariants = _db.Set<ChallengeVariant>();
@@ -72,9 +71,9 @@ namespace EVA_backend.DataLayer
                 Difficulty = 5,
                 Title = "Plantaardige Béchamelsaus",
                 Image = "http://www.evavzw.be/sites/default/files/styles/news_thumbnail/public/faq/bechamelsaus.jpg?itok=1fnUN4ca",
-                ChallengeVariants = new List<ChallengeVariant>() { challengeVariants.Where(x => x.Name.Equals("Recipe")).First() }
+                ChallengeVariants = new List<ChallengeVariant>() { challengeVariants.Where(x => x.Name.Equals("Product")).First() }
             });
-            _db.SaveChanges();
+            //_db.SaveChanges();
 
             String tweedeRecept = "Ga eens een kookworkshop gaan volgen in het gebouw van Eva.";
 
@@ -87,7 +86,7 @@ namespace EVA_backend.DataLayer
                 Description = tweedeRecept,
                 Difficulty = 3,
                 Title = "Kookworkshop",
-                Image = "http://www.evavzw.be/sites/default/files/styles/news_thumbnail/public/faq/bechamelsaus.jpg?itok=1fnUN4ca",
+                Image = "http://www.evavzw.be/sites/default/files/styles/header_image/public/page/banner/kookworkshops.jpg?itok=OnUHfBeX",
                 ChallengeVariants = new List<ChallengeVariant>()
                 {
                     challengeVariants.Where(x => x.Name.Equals("Recipe")).First()                        
@@ -99,9 +98,7 @@ namespace EVA_backend.DataLayer
 
             });
 
-            _db.SaveChanges();
-
-            
+            _db.SaveChanges();            
         }
     }
 }
